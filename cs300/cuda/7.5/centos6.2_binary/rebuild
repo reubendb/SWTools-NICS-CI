@@ -45,7 +45,7 @@ rm -rf $SRCDIR
 sh /sw/sources/${PACKAGE}/${VERSION}/cuda_7.5.18_linux.run --silent \
 --samples --samplespath=${SW_BLDDIR} \
 --toolkit --toolkitpath=${SW_BLDDIR} \
---override --verbose
+--override --verbose --nox11 --nochown
 
 if [ $? -ne 0 ] ; then
   echo "$PACKAGE install failed"
