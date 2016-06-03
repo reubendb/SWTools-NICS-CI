@@ -64,9 +64,6 @@ cat > ${PACKAGE}.pbs << EOF
 set -o verbose
 cd \$PBS_O_WORKDIR
 
-module swap PrgEnv-cray PrgEnv-gnu
-module add craype-hugepages2M
-
 H5BIN=${SW_BLDDIR}/bin/hdf5Benchmark
 aprun -n 12 \$H5BIN | tee ${PACKAGE}.log | tee -a ${SW_BLDDIR}/.running
 #aprun -n 12 \$H5BIN | tee -a ${SW_BLDDIR}/.running
@@ -84,7 +81,7 @@ grep Performance ${PACKAGE}.log | awk '{print "YVALUE=",\$2}' \
 JOBID=\`echo \$PBS_JOBID | cut -d "." -f1 \`
 chmod 775 ${SW_BLDDIR}/status
 rm ${SW_BLDDIR}/.running
-cat \${JOBID}.OU >> ${SW_BLDDIR}/test.log
+cat ${PACKAGE}.o\${JOBID} >> ${SW_BLDDIR}/test.log
 cat ${PACKAGE}.log >> ${SW_BLDDIR}/test.log
 chmod 664 ${SW_BLDDIR}/test.log
 EOF
