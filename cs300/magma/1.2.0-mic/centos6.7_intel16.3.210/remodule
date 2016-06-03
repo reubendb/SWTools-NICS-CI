@@ -1,0 +1,27 @@
+  ### Set Environment (do not remove this line only change what is in between)
+  . ${MODULESHOME}/init/ksh
+  module unload PE-intel
+  module unload PE-cray
+  module unload PE-gnu
+  module load PE-intel
+  module swap intel-compilers intel-compilers/2016.3.210
+  module swap intel-mpi intel-mpi/5.1.3.210
+  ### End Environment (do not remove this line only change what is in between)
+  
+# load any other dependent modules here
+
+# env vars here
+
+PACKAGE=magma
+VERSION=1.2.0
+SRCDIR=${PACKAGE}mic-${VERSION}
+
+# these may need to go up in the special section between ###
+export CC=icc
+export CXX=icpc
+export F77=ifort
+export F90=ifort
+export F9C=ifort
+export F9X=ifort
+export F03=ifort
+export FC=ifort
