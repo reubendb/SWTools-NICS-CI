@@ -60,7 +60,7 @@ cd \$PBS_O_WORKDIR
 
 export PATH=${SW_BLDDIR}/bin:\$PATH
 
-mpirun -np 1 ./NodeImbalance_Beacon_Intel \
+mpirun -np 2 ./NodeImbalance_Beacon_Intel \
   | tee -a ${SW_BLDDIR}/.running > NodeImbalance.out 
 
 if [ \$? -eq 0 ]; then
